@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : LivingEntity
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnEnable()
     {
-        
+        base.OnEnable();
+    }
+    public override void OnDamege(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    {
+        base.OnDamege(damage, hitPoint, hitNormal);
+    }
+    public override void OnDie()
+    {
+        if (isDead)
+        {
+            return;
+        }
+        base.OnDie();
     }
 }
