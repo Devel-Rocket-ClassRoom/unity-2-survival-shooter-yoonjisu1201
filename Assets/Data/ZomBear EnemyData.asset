@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184146e011c5b01479a1f7f79864258b, type: 3}
   m_Name: ZomBear EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  maxHealth: 0
-  health: 0
-  damage: 0
+  maxHealth: 150
+  damage: 10
   attackTimer: 0
