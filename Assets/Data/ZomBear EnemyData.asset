@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184146e011c5b01479a1f7f79864258b, type: 3}
   m_Name: ZomBear EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
+  hurtClip: {fileID: 8300000, guid: 1d4840678e677424b8921716c72397ea, type: 3}
+  hitParticle: {fileID: 19800000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
   maxHealth: 150
   damage: 10
-  attackTimer: 0
+  attackInterval: 0.5
+  speed: 1.5

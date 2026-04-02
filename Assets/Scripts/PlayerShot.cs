@@ -17,6 +17,8 @@ public class PlayerShot : MonoBehaviour
 
     public int damage = 20;
     private float fireDistance = 50;
+    private float timeBetFire = 0.12f;
+    private float lastFireTime;
 
     private Coroutine CoShot;
 
@@ -33,8 +35,9 @@ public class PlayerShot : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time > lastFireTime + timeBetFire)
         {
+            lastFireTime = Time.time;
             Shot();
         }
     }
@@ -46,7 +49,10 @@ public class PlayerShot : MonoBehaviour
         {
             hitPosition = hit.point;
             var target = hit.collider.GetComponent<IDamageable>();
-            target.OnDamege(damage, hit.point, hit.normal);
+            if (target != null)
+            {
+                target.OnDamage(damage, hit.point, hit.normal);
+            }
         }
         else
         {

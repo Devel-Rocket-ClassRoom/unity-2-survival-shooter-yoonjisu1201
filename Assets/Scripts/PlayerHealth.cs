@@ -12,6 +12,7 @@ public class PlayerHealth : LivingEntity
 
     private void Awake()
     {
+        startingHealth = 300f;
         playerAudioSource = GetComponent<AudioSource>();
         playerAnimator = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -26,9 +27,9 @@ public class PlayerHealth : LivingEntity
         playerMovement.enabled = true;
         playerShot.enabled = true;
     }
-    public override void OnDamege(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
-        base.OnDamege(damage, hitPoint, hitNormal);
+        base.OnDamage(damage, hitPoint, hitNormal);
         playerAudioSource.PlayOneShot(playerHurtClip);
         //ui 체력바 업데이트
     }
@@ -45,9 +46,9 @@ public class PlayerHealth : LivingEntity
         playerShot.enabled = false;
         //gameover ui 업데이트
     }
-    public virtual void OnHeal(float add)
-    {
-        base.OnHeal(add);
-        //ui 체력바 업데이트
-    }
+    //public virtual void OnHeal(float add)
+    //{
+    //    base.OnHeal(add);
+    //    //ui 체력바 업데이트
+    //}
 }

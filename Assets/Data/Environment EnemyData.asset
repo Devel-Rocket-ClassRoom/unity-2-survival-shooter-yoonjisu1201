@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184146e011c5b01479a1f7f79864258b, type: 3}
   m_Name: Environment EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  deathClip: {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
+  hurtClip: {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
+  hitParticle: {fileID: 19800000, guid: ef39ae7291c751249b296f00bf6fb042, type: 3}
   maxHealth: 300
   damage: 20
-  attackTimer: 0
+  attackInterval: 0.5
+  speed: 2

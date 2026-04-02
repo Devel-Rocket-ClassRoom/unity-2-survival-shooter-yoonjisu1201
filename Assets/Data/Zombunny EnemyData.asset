@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184146e011c5b01479a1f7f79864258b, type: 3}
   m_Name: Zombunny EnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  deathClip: {fileID: 8300000, guid: 1d3bfb9269f136947bf8ac164cace1ff, type: 3}
+  hurtClip: {fileID: 8300000, guid: 02e6208ec76314158a9f548f51fe9f11, type: 3}
   maxHealth: 80
   damage: 5
-  attackTimer: 0
+  attackInterval: 0.5
+  speed: 3

@@ -12,7 +12,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         isDead = false;
     }
-    public virtual void OnDamege(float damage, Vector3 hitPoint, Vector3 hitNormal)
+    public virtual void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
         currentHealth = startingHealth - damage;
         if (currentHealth <= 0)
