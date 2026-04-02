@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
     }
-    private void Start()
+    private void OnEnable()
     {
-        
+        playerAnimator.SetBool("IsMove", false);
     }
 
     private void FixedUpdate()

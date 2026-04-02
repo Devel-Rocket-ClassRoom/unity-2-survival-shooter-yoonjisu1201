@@ -7,7 +7,6 @@ public class PlayerInput : MonoBehaviour
     private readonly string mRotationAxis = "Mouse X";
     //private readonly string fireButton = "Fire1";
 
-
     public float H_Move {  get; private set; } 
     public float V_Move { get; private set; }
     public float MouseRotatiton { get; private set; }
@@ -19,5 +18,6 @@ public class PlayerInput : MonoBehaviour
         V_Move = Input.GetAxisRaw(vMoveAxis);
         MouseRotatiton = Input.GetAxis(mRotationAxis);
         //FireButton = Input.GetButton(fireButton);
+
     }
 }
