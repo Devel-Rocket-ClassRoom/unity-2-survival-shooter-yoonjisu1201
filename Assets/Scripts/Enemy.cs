@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using static UnityEngine.Audio.GeneratorInstance;
 using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : LivingEntity
@@ -23,11 +25,14 @@ public class Enemy : LivingEntity
     private Animator enemyAnimator;
     private NavMeshAgent agent;
     private ParticleSystem hitEffect;
+    private Rigidbody rb;
 
-    private float traceDistance = 20f;
+    private float traceDistance = 50f;
     private float attckDistance = 2f;
     private float damage;
     private float lastAttackTime;
+    private bool isSinking = false;
+    private float sinkSpeed = 0.5f;
 
     private status state;
     public status State
@@ -51,6 +56,7 @@ public class Enemy : LivingEntity
                 case status.Die:
                     enemyAnimator.SetTrigger("Die");
                     agent.isStopped = true;
+                    agent.enabled = false;
                     break;
             }
         }
@@ -62,6 +68,7 @@ public class Enemy : LivingEntity
         agent = GetComponent<NavMeshAgent>();
         enemyCollider = GetComponent<Collider>();
         hitEffect = GetComponentInChildren<ParticleSystem>();
+        rb = GetComponent<Rigidbody>();
 
     }
 
@@ -75,6 +82,12 @@ public class Enemy : LivingEntity
     {
         base.OnEnable();
 
+        OnDead.AddListener(StartDeathSequence);
+
+        Setup(enemyData);
+        isSinking = false;
+        rb.isKinematic = false;
+
         agent.enabled = true;
         agent.isStopped = false;
         agent.ResetPath();
@@ -87,9 +100,37 @@ public class Enemy : LivingEntity
         enemyCollider.enabled = true;
         State = status.Idle;
     }
+    public void OnDisable()
+    {
+        OnDead.RemoveListener(StartDeathSequence);
+        if (agent != null)
+        {
+            if (agent.gameObject.activeSelf && agent.isOnNavMesh)
+            {
+                agent.isStopped = true;
+            }
+            agent.enabled = false;
+        }
+        if (enemyCollider != null)
+        {
+            enemyCollider.enabled = false;
+        }
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+    }
 
     public void Update()
     {
+        if (isSinking)
+        {
+            transform.Translate(-Vector3.up * sinkSpeed * Time.deltaTime);
+            return;
+        }
+        if (isDead) return;
+
         switch (state)
         {
             case status.Idle:
@@ -167,12 +208,8 @@ public class Enemy : LivingEntity
 
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
-        if (hitEffect == null)
-        {
-            // 만약 이 로그가 찍힌다면 Awake에서 자식을 못 찾은 겁니다.
-            Debug.LogError($"{gameObject.name}: hitEffect가 null입니다!");
-            return;
-        }
+        if (isDead) return;
+      
         hitEffect.transform.position = hitPoint;
         hitEffect.transform.forward = hitNormal;
         hitEffect.Play();
@@ -181,12 +218,33 @@ public class Enemy : LivingEntity
     }
     public override void OnDie()
     {
-        if (isDead)
+        if (isDead) return;
+
+        GameObject uiObj = GameObject.Find("UiManager");
+        if (uiObj != null)
         {
-            return;
+            UiManager uiManager = uiObj.GetComponent<UiManager>();
+
+            if (uiManager != null)
+            {
+                uiManager.AddScore(enemyData.score); 
+            }
         }
-        enemyAdioSource.PlayOneShot(enemyData.deathClip);
-        state = status.Die;
         base.OnDie();
+    }
+
+    private void StartDeathSequence() //사망 이펙트 이벤트
+    {
+        enemyAdioSource.PlayOneShot(enemyData.deathClip);
+        State = status.Die;
+    }
+    public void StartSinking()
+    {
+        if (enemyCollider != null)  enemyCollider.enabled = false;
+
+        rb.isKinematic = true;
+        isSinking = true;
+
+        Destroy(gameObject, 2f);
     }
 }

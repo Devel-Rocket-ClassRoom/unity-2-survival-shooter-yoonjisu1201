@@ -14,7 +14,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     }
     public virtual void OnDamage(float damage, Vector3 hitPoint, Vector3 hitNormal)
     {
-        currentHealth = startingHealth - damage;
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -26,12 +26,12 @@ public class LivingEntity : MonoBehaviour, IDamageable
         isDead = true;
         OnDead?.Invoke();
     }
-    public virtual void OnHeal(float add)
-    {
-        currentHealth += add;
-        if (currentHealth > startingHealth )
-        {
-            currentHealth = startingHealth;
-        }
-    }
+    //public virtual void OnHeal(float add)
+    //{
+    //    currentHealth += add;
+    //    if (currentHealth > startingHealth )
+    //    {
+    //        currentHealth = startingHealth;
+    //    }
+    //}
 }

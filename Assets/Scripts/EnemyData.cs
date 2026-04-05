@@ -10,4 +10,5 @@ public class EnemyData : ScriptableObject
     public float damage;
     public float attackInterval = 0.5f;
     public float speed;
+    public int score;
 }

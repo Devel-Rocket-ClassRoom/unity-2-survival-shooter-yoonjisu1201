@@ -16,5 +16,6 @@ MonoBehaviour:
   hurtClip: {fileID: 8300000, guid: 02e6208ec76314158a9f548f51fe9f11, type: 3}
   maxHealth: 80
   damage: 5
-  attackInterval: 0.5
-  speed: 3
+  attackInterval: 1
+  speed: 4
+  score: 10

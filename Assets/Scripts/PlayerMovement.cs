@@ -6,12 +6,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody playerRb;
     private Animator playerAnimator;
 
-    public Transform cameraTransform;
+    public float movespeed = 5f;
 
-    public float movespeed = 5;
-    public float rotateSpeed = 250f;
-    public float followSpeed = 5;
-    public Vector3 camaraOfset = new Vector3(0f, 5f, -4f);
 
     private void Awake()
     {
@@ -26,14 +22,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var angle = playerInput.MouseRotatiton * rotateSpeed * Time.deltaTime;
-        playerRb.MoveRotation(transform.rotation * Quaternion.Euler(0, angle, 0));
-
         //캐릭터 이동량 계산
-        var new_vPosition = playerInput.transform.forward * playerInput.V_Move * movespeed * Time.deltaTime;
-        var new_hPosition = playerInput.transform.right * playerInput.H_Move * movespeed * Time.deltaTime;
+        Vector3 moveDir = ((Vector3.forward * playerInput.V_Move) + (Vector3.right * playerInput.H_Move)).normalized;
+        Vector3 nextPosition = playerRb.position + (moveDir * movespeed * Time.deltaTime);
 
-        playerRb.MovePosition(transform.position + new_vPosition + new_hPosition);
+        playerRb.MovePosition(nextPosition);
+
+        //캐릭터 마우스 위치에 따른 회전
+        Vector3 targetDir = playerInput.MouseWorldPosition - playerRb.position;
+        targetDir.y = 0f;
+
+        if (targetDir != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(targetDir);
+            playerRb.MoveRotation(targetRotation);
+        }
     }
     private void Update()
     {
@@ -45,13 +48,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerAnimator.SetBool("IsMove", false);
         }
-        FollowCamera();
+        
     }
 
-    public void FollowCamera()
-    {
-        Vector3 targetPos = transform.TransformPoint(camaraOfset);
-        cameraTransform.position = Vector3.Lerp(cameraTransform.position, targetPos, 5f * Time.deltaTime);
-        cameraTransform.LookAt(transform.position + Vector3.up * 3f);
-    }
+    
 }
