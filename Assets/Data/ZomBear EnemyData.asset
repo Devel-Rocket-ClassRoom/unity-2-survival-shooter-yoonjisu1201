@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   deathClip: {fileID: 8300000, guid: 62366b8d2c37a49dca550841c741317f, type: 3}
   hurtClip: {fileID: 8300000, guid: 1d4840678e677424b8921716c72397ea, type: 3}
-  maxHealth: 150
+  maxHealth: 300
   damage: 10
   attackInterval: 1
   speed: 2.5

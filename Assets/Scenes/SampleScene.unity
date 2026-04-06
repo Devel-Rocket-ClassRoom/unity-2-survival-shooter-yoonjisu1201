@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -433,7 +433,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -40, y: -5}
-  m_SizeDelta: {x: 28.9198, y: 28.919495}
+  m_SizeDelta: {x: 14.7132, y: 14.7131}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &302299461
 MonoBehaviour:
@@ -510,8 +510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 540}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 400, y: 250.14}
+  m_SizeDelta: {x: 800, y: 500.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311095969
 MonoBehaviour:
@@ -701,7 +701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 140, y: 40}
+  m_AnchoredPosition: {x: 100, y: 30}
   m_SizeDelta: {x: 130, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &558280750
@@ -1409,8 +1409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -54.1241, y: -7.3686}
+  m_SizeDelta: {x: -74.0365, y: -4.9124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1600747952 stripped
 Transform:
@@ -1451,8 +1451,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -2.9946594, y: -0.33220005}
-  m_SizeDelta: {x: 5.9881, y: 10.6644}
+  m_AnchoredPosition: {x: -53.1038, y: -7.539}
+  m_SizeDelta: {x: -60.8148, y: 0.5132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1619166580
 MonoBehaviour:
@@ -1526,7 +1526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1725383204
@@ -1576,8 +1576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1737,8 +1737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.5, y: 0}
-  m_SizeDelta: {x: -15, y: 0}
+  m_AnchoredPosition: {x: -52.8522, y: -7.3686}
+  m_SizeDelta: {x: -71.4927, y: -9.8248}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1902979234
 PrefabInstance:
@@ -1878,6 +1878,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194228}
     - target: {fileID: 2673687243575355298, guid: b684ce7bda459934093d58a093b542c3, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673687243575355298, guid: b684ce7bda459934093d58a093b542c3, type: 3}
       propertyPath: targetLayer.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -1929,6 +1933,10 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 8475717950484274431, guid: b684ce7bda459934093d58a093b542c3, type: 3}
+      propertyPath: SoreText
+      value: 
+      objectReference: {fileID: 1725383202}
     - target: {fileID: 8475717950484274431, guid: b684ce7bda459934093d58a093b542c3, type: 3}
       propertyPath: gameOverUI
       value: 

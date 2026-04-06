@@ -9,6 +9,7 @@ public class PlayerHealth : LivingEntity
     public AudioClip playerDeathClip;
     public AudioClip playerHurtClip;
     public GameObject gameOverUI;
+    public GameObject SoreText;
     public Slider healthSlider;
 
     private Animator playerAnimator;
@@ -34,6 +35,7 @@ public class PlayerHealth : LivingEntity
         base.OnEnable();
         healthSlider.gameObject.SetActive(true);
         healthSlider.value = currentHealth / startingHealth;
+        SoreText.SetActive(true);
         gameOverUI.SetActive(false);
         OnDead.AddListener(HandlePlayerDeath);
 
